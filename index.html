@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAN Card Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align:center ;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .valid {
+            color: green;
+        }
+        .invalid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>PAN Card Validator</h2>
+    <input type="text" id="panInput" placeholder="Enter PAN number">
+    <button onclick="validatePAN()">Check Validity</button>
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+    function validatePAN() {
+        var pan = document.getElementById("panInput").value;
+        var pattern = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+        var resultDiv = document.getElementById("result");
+
+        if (pattern.test(pan)) {
+            resultDiv.textContent = "PAN number is valid.";
+            resultDiv.className = "result valid";
+        } else {
+            resultDiv.textContent = "PAN number is invalid.";
+            resultDiv.className = "result invalid";
+        }
+    }
+</script>
+
+</body>
+</html>
